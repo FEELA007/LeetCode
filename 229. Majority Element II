@@ -1,0 +1,23 @@
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int count =0;
+        for(int n :nums){
+            if(!map.containsKey(n)){
+                map.put(n,1);
+            }
+            else{
+                map.put(n,map.get(n)+1);
+            }
+            count++;
+        }
+        List<Integer> na= new ArrayList<>();
+        for(int n :nums){
+            if(map.get(n)>(int)count/3 && !na.contains(n)){
+                na.add(n);
+            }
+        }
+        return na;
+    }
+    
+}

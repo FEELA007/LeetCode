@@ -1,0 +1,7 @@
+
+class Solution(object):
+   def superPow(self, a, b):
+       exp = 0
+       for d in b:
+           exp = exp * 10 + d
+       return pow(a, exp, 1337)

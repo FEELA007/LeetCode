@@ -1,0 +1,19 @@
+import java.util.stream.Collectors;
+class Solution {
+    public List<Integer> findMissingElements(int[] nums) {
+        Arrays.sort(nums);
+                List<Integer> list = Arrays.stream(nums).boxed().collect(Collectors.toList());
+        List<Integer> re = new ArrayList<>();
+        for(int i=nums[0];i<nums[nums.length-1];i++){
+            if(list.contains(i)){
+                continue;
+            }
+            else{
+                re.add(i);
+
+            }
+
+        }
+        return re;
+    }
+}
