@@ -1,0 +1,37 @@
+class Solution {
+    public int myAtoi(String s) {
+       double num = 0; 
+       int sign = 1;
+       boolean started = false;
+
+       for(int i=0; i<s.length(); i++){
+        char a = s.charAt(i);
+        if(a == ' '){
+            if(started) break; 
+            continue;
+        }
+        else if ((a == '+' || a == '-') && started) {
+            break;
+        }
+        else if (a == '+' || a == '-') {
+            sign = (a == '-') ? -1 : 1;
+            started = true;
+        }
+        else if(a < '0' || a > '9'){
+            break;
+        }
+        else{
+            int digit = a - '0';
+            num = num * 10 + digit;
+            started = true;
+            
+            if (num * sign >= Integer.MAX_VALUE) 
+            return Integer.MAX_VALUE;
+            if (num * sign <= Integer.MIN_VALUE) 
+            return Integer.MIN_VALUE;a
+        }
+       }
+       
+       return (int)(num * sign); 
+    }
+}
